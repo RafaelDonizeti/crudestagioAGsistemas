@@ -1,0 +1,53 @@
+{% extends "./baseagenda.html" %}
+
+{% block body %}
+<div class = "">
+    <div class = "col-md-4">
+        <h1>Edição de Contatos </h1>
+            <div class = "card">
+                <div class = "card-body">
+                   <form action = "/visualizarcontato/" method="POST"> {% csrf_token %}
+                       <div class = "form-group">
+
+                            <h7 class="card-title">ID</h7>
+                            <input type = "text " id ="idid" value = "{{contatos.id}}" class = "form-control" name = "id" readonly>
+                            <h7 class="card-title">Nome</h7>
+                            <input type = "text " id ="idnome" value = "{{contatos.nome}}" class = "form-control" name = "nome">
+                            <h7 class="card-title">Telefone</h7>
+                            <input type = "text " id ="idtelefone" value = "{{contatos.telefone}}" class = "form-control" name = "telefone">
+
+                            <h7 class="card-title">Email</h7>
+                            <input type = "text " id ="idemail" value = "{{contatos.email}}" class = "form-control" name = "email">
+                            <h7 class="card-title">Endereço</h7>
+                            <input type = "text " id ="idendereco" value = "{{contatos.endereco}}" class = "form-control" name = "endereco">
+                            <h7 class="card-title">Número</h7>
+                            <input type = "text " id ="idnumero" value = "{{contatos.numero}}" class = "form-control" name = "numero">
+                            <h7 class="card-title">CEP</h7>
+                            <input type = "text " id ="idcep" value = "{{contatos.cep}}" class = "form-control" name = "cep" >
+                            <h7 class="card-title">Cidade</h7>
+                            <input type = "text " id ="idcidade" value = "{{contatos.cidade}}" class = "form-control" name = "cidade">
+                            <h7 class="card-title">Estado</h7>
+                            <input type = "text " id ="idestado" value = "{{contatos.estado}}" class = "form-control" name = "estado">
+                            <h7 class="card-title">Data do Cadastro</h7>
+                            <input type = "text " id ="iddata_cadastro" value ="{{contatos.data_cadastro}}" class = "form-control" name = "data_cadastro" readonly>
+                       </div>
+                       <div class = "form-group">
+                           <button type = "submit"> Salvar </button>
+                       </div>
+
+
+                   </form>
+
+
+                </div>
+
+            </div>
+
+    </div>
+
+</div>
+                        <div class = "form-group">
+                           <a href="/cancelaredicao/" class = "btn btn-success"> Cancelar </a>
+                       </div>
+
+{% endblock %}

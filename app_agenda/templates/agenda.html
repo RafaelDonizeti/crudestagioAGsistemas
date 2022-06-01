@@ -1,0 +1,83 @@
+{% extends "./baseagenda.html" %}
+
+{% block body %}
+
+<div class = "row">
+    <div class = "col-sm-12 col-md-6 col-lg-4 col-xl-4">
+
+        <h1>Informações </h1>
+            <div class = "card">
+                <div class = "card-body">
+                   <form action = "/registrarcontato/" method="POST"> {% csrf_token %}
+                       <div class = "form-group">
+
+
+                            <input type = "text " id ="idnome" name = "nome" required placeholder="Nome">
+                            <input type = "text " id ="idtelefone" name = "telefone" required placeholder="Telefone">
+                            <input type = "text " id ="idemail" name = "email" required placeholder="Email">
+                            <input type = "text " id ="idendereco" name = "endereco" required placeholder="Endereço">
+                            <input type = "text " id ="idnumero" name = "numero" required placeholder="Número">
+                            <input type = "text " id ="idcep" name = "cep" required placeholder="CEP">
+                            <input type = "text " id ="idcidade" name = "cidade" required placeholder="Cidade">
+                            <input type = "text " id ="idestado" name = "estado" required placeholder="Estado">
+
+                       </div>
+                       <br>
+                       <div class = "form-group">
+                           <button type = "submit" class = "btn btn-success"> Salvar </button>
+
+                       </div>
+                   </form>
+
+                </div>
+
+            </div>
+    </div>
+        <div class = "col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <div class = "table-responsive">
+                <table class = "table table-striped">
+
+                    <h1> Contatos</h1>
+
+                    <thead>
+                        <tr>
+
+                            <th>Nome </th>
+                            <th>Telefone </th>
+                            <th>Email </th>
+                            <th>Endereço </th>
+                            <th>Número </th>
+                            <th>Cep </th>
+                            <th>Cidade </th>
+                            <th>Estado </th>
+                            <th>Data Cadastro </th>
+                            <th colspan="2">Ações </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in contatos %}
+                            <tr>
+
+                                 <td> {{c.nome}}</td>
+                                 <td> {{c.telefone}}</td>
+                                 <td> {{c.email}}</td>
+                                 <td> {{c.endereco}}</td>
+                                 <td> {{c.numero}}</td>
+                                 <td> {{c.cep}}</td>
+                                 <td> {{c.cidade}}</td>
+                                 <td> {{c.estado}}</td>
+                                 <td> {{c.data_cadastro}}</td>
+                                 <td> <a href="edicaocontato/{{c.id}}" class = "btn btn-success"> Editar </a> </td>
+                                 <td> <a href="excluircontato/{{c.id}}" class="btn btn-danger btnexcluir" onclick="return confirm('Excluir o registro?')"> Excluir </a> </td>
+
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
