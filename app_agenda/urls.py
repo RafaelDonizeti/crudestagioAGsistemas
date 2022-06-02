@@ -9,4 +9,5 @@ urlpatterns = [
     path('excluircontato/<id>', views.excluircontato),
     path('cancelaredicao/', views.cancelaredicao)
 
+
 ]

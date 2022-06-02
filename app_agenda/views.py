@@ -3,8 +3,15 @@ from .models import Contatos
 
 
 def home(request):
-    contato = Contatos.objects.all()
-    return render(request, "agenda.html", {"contatos": contato})
+    contatos = Contatos.objects.all()
+
+    busca = request.GET.get('search')
+    if busca:
+        contatos = Contatos.objects.filter(nome__icontains=busca)
+    else:
+        contatos =  contatos = Contatos.objects.all()
+
+    return render(request, "agenda.html", {"contatos": contatos})
 
 
 def registrarcontato(request):
@@ -61,5 +68,6 @@ def excluircontato(request, id):
 
 def cancelaredicao(request):
     return redirect('/')
+
 
 
